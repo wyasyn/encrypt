@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Secure Message Encryption/Decryption Tool
 
-## Getting Started
+This is a simple web application built with Next.js that allows users to encrypt and decrypt messages using a private key.
 
-First, run the development server:
+## Features
 
-```bash
+- Encrypt sensitive messages for secure communication.
+- Decrypt messages using the provided private key.
+- Reset functionality to clear input fields.
+- Copy the decrypted message to the clipboard for easy sharing.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/wyasyn/secure-message-encryption-app.git
+   cd secure-message-encryption-app
+
+Install dependencies:
+
+bash
+Copy code
+npm install
+Run the application:
+
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Usage
+Enter your message in the textarea.
+Enter your private key in the input field.
+Click the "Encrypt" button to encrypt the message.
+To decrypt, click the "Decrypt" button after entering the encrypted message and key.
+You can reset the input fields using the "Reset" button.
+Click the "Copy" button to copy the decrypted message to the clipboard.
+Demo
+You can access a live demo of the app here.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Contributing
+Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Fork the repository.
+Create a new branch for your feature or bug fix.
+Make your changes and commit them with descriptive messages.
+Push your changes to your fork.
+Create a pull request to this repository's main branch.
+Please ensure your code adheres to the project's coding standards and includes appropriate documentation.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+License
+This project is licensed under the MIT License.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+Remember to replace placeholders like `your-username`, `https://your-demo-url.com`, and `LICENSE` with actual URLs and information relevant to your project.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+You can also add more sections or information as needed, such as "Security Considerations," "Acknowledgments," or "Testing," depending on the complexity and requirements of your project.
