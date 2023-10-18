@@ -1,95 +1,62 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+import React, { useState } from 'react';
+import CryptoJS from 'crypto-js';
+import Image from 'next/image';
 
 export default function Home() {
+  const [message, setMessage] = useState('');
+  const [key, setKey] = useState('');
+  const [result, setResult] = useState('');
+
+  const encryptMessage = () => {
+    const encryptedMessage = CryptoJS.AES.encrypt(message, key).toString();
+    setResult(`Encrypted: ${encryptedMessage}`);
+  };
+
+  const decryptMessage = () => {
+    const decryptedMessage = CryptoJS.AES.decrypt(result.split(' ')[1], key).toString(CryptoJS.enc.Utf8);
+    setResult(`Decrypted: ${decryptedMessage}`);
+  };
+
+  const reset = () => {
+    setMessage('');
+    setKey('');
+    setResult('');
+  };
+
+  const copyToClipboard = () => {
+    if (result) {
+      navigator.clipboard.writeText(result.split(': ')[1]);
+    }
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <div className='container'>
+      <div className='image'>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        src='/icon.png'
+        alt='logo'
+        width={50}
+        height={50}
+         />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <h1>Encryption</h1>
+      <div>
+        <label>Enter your message:</label>
+        <textarea value={message} onChange={(e) => setMessage(e.target.value)} rows="4" />
       </div>
-    </main>
-  )
+      <div>
+        <label>Enter your private key:</label>
+        <input type="password" value={key} onChange={(e) => setKey(e.target.value)} />
+      </div>
+      <div className='btns'>
+      <button onClick={encryptMessage}>Encrypt</button>
+      <button onClick={decryptMessage}>Decrypt</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={copyToClipboard}>Copy</button>
+      </div>
+      
+      <div id="result">{result}</div>
+    </div>
+  );
 }
